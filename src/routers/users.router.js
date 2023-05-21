@@ -6,5 +6,7 @@ const router = Router();
 
 router.post("/signup", signupValidation, signup);
 router.post("/signin", signinValidation, signin);
+router.get("/users/me");
+router.get("/ranking");
 
 export default router;
