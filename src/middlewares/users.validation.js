@@ -37,9 +37,6 @@ export async function signupValidation(req, res, next) {
     try {
         const verifyEmail = await db.query(`SELECT * from users WHERE email=$1;`, [email]);
         if (verifyEmail.rows.length !== 0) return res.status(409).send("E-mail já cadastrado!");
-
-        const comparePassword = bcrypt.compareSync(password, verifyEmail[0].password);
-        if (!comparePassword) return res.status(422).send("As senhas não coincidem!");
     } catch (err) {
         return res.status(500).send(err.message);
     };
