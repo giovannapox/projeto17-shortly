@@ -27,11 +27,12 @@ export async function signin(req, res) {
 };
 
 export async function signup(req, res) {
-    const { name, password, email } = req.body;
+    const { name, password, email, confirmPassword } = req.body;
     const hash = bcrypt.hashSync(password, 10);
 
     try {
         await db.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`, [name, email, hash]);
+        if(password !== confirmPassword) return res.sendStatus(422);
         return res.sendStatus(201);
     } catch (err) {
         return res.status(500).send(err.message);
