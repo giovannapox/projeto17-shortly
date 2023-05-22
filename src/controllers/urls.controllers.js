@@ -45,7 +45,7 @@ export async function redirectUrls(req, res) {
 
         await db.query(`UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE id=$1;`, [id]);
 
-        res.redirect(200, url);
+        res.redirect(302, url);
     } catch (err) {
         return res.status(500).send(err.message);
     };
