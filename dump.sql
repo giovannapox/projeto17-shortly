@@ -27,7 +27,8 @@ SET default_table_access_method = heap;
 CREATE TABLE public.sessions (
     id integer NOT NULL,
     "userId" integer NOT NULL,
-    token text NOT NULL
+    token text NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -60,7 +61,8 @@ CREATE TABLE public.urls (
     "userId" integer NOT NULL,
     url text NOT NULL,
     "shortUrl" text NOT NULL,
-    "visitCount" integer DEFAULT 0 NOT NULL
+    "visitCount" integer DEFAULT 0 NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -92,7 +94,8 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     name text NOT NULL,
     email text NOT NULL,
-    password text NOT NULL
+    password text NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -141,30 +144,30 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.sessions VALUES (1, 1, '79d0b8bb-437d-43bc-a62d-70943ee747e2');
-INSERT INTO public.sessions VALUES (2, 2, 'da059174-d7df-4c9d-8653-550f003d483e');
+INSERT INTO public.sessions VALUES (1, 1, '79d0b8bb-437d-43bc-a62d-70943ee747e2', '2023-05-22 20:14:22.526736');
+INSERT INTO public.sessions VALUES (2, 2, 'da059174-d7df-4c9d-8653-550f003d483e', '2023-05-22 20:14:22.526736');
 
 
 --
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (13, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'Hw9yQWJnWq0INAhPyhRGv', 0);
-INSERT INTO public.urls VALUES (14, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'vkz1rZxXq69E9jlE1VEzS', 0);
-INSERT INTO public.urls VALUES (11, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'k2F0aBs9J6OxDnjsz-5lk', 3);
-INSERT INTO public.urls VALUES (12, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'bokuUl9WAZ9T-G4cdopEk', 2);
-INSERT INTO public.urls VALUES (15, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'HYEct6Tt4xN67bRmmB3WO', 0);
-INSERT INTO public.urls VALUES (16, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'FpcbHKo5MhBeTW3OKGNmz', 0);
-INSERT INTO public.urls VALUES (17, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', '6TSMeQlky1vk4ueKBtKvV', 0);
-INSERT INTO public.urls VALUES (18, 2, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'XBtXxP2pkLZbXZ1eY_INs', 10);
+INSERT INTO public.urls VALUES (13, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'Hw9yQWJnWq0INAhPyhRGv', 0, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (14, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'vkz1rZxXq69E9jlE1VEzS', 0, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (11, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'k2F0aBs9J6OxDnjsz-5lk', 3, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (12, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcw', 'bokuUl9WAZ9T-G4cdopEk', 2, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (15, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'HYEct6Tt4xN67bRmmB3WO', 0, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (16, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'FpcbHKo5MhBeTW3OKGNmz', 0, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (17, 1, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', '6TSMeQlky1vk4ueKBtKvV', 0, '2023-05-22 20:14:04.134094');
+INSERT INTO public.urls VALUES (18, 2, 'https://www.youtube.com/watch?v=AvNOHQJhpcd', 'XBtXxP2pkLZbXZ1eY_INs', 10, '2023-05-22 20:14:04.134094');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com.br', '$2b$10$92jQcxY2DfusxDMc6lLAPOR0G.b2MHWuCOwNJy7w2erXJARyH5Xby');
-INSERT INTO public.users VALUES (2, 'Gigiba', 'gigiba@driven.com.br', '$2b$10$28LVPrS97hb6sdRX5Dj5t.2yB9kfiTj2NPI5Xp6liuN2o8c..JghC');
+INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com.br', '$2b$10$92jQcxY2DfusxDMc6lLAPOR0G.b2MHWuCOwNJy7w2erXJARyH5Xby', '2023-05-22 20:14:10.47728');
+INSERT INTO public.users VALUES (2, 'Gigiba', 'gigiba@driven.com.br', '$2b$10$28LVPrS97hb6sdRX5Dj5t.2yB9kfiTj2NPI5Xp6liuN2o8c..JghC', '2023-05-22 20:14:10.47728');
 
 
 --
